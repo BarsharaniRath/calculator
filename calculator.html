@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Operators</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css"> 
+        <link rel="stylesheet" href="../font/css/all.css">   
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/bootstrap-icons.svg">
+        <script>
+            function GetAmount(){
+                document.getElementById("txtAmount").value=document.getElementById("rangeAmount").value;
+            }
+            function GetYears(){
+                document.getElementById("txtYears").value=document.getElementById("rangeYears").value;
+            }
+            function GetRate(){
+                document.getElementById("txtRate").value=document.getElementById("rangeRate").value;
+            }
+            function Calculate(){
+                var principle=parseInt(document.getElementById("txtAmount").value);
+                var months=12*parseInt(document.getElementById("txtYears").value);
+                var intrest=parseInt(document.getElementById("txtRate").value)/1200;
+               var EMI=parseInt(principle*((intrest*(intrest+1)**months)/(((intrest+1)**months)-1)));
+               result.innerHTML=`Your monthly EMI will be ${EMI} per month`; 
+                
+            }
+        </script>
+    </head>
+
+    <body class="container-fluid">
+        <div>
+        <form>
+            <h1 class="m-2 text-success align-center">EMI Calculator</h1>
+       
+        <div class="mt-3">
+            
+            <div class="col-2"></div>
+            <div class="col-3">
+                <div class="input-group w-100" >
+                    <span class="input-group-text">Amount you need</span>
+                    <input type="text" size="6" class="form-control" value="10000" id="txtAmount">
+                </div>
+                <div>
+                    <input onchange="GetAmount()" type="range" min="10000" max="5000000" value="1000" class="form-range w-100" id="rangeAmount">   
+                </div>  
+                <label class="float-begin">&#8377; 10000</label> 
+                <label>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+                <label class="float-ends">&#8377; 5000000</label>             
+            </div>
+            </div>
+            <br>
+        
+        
+            <div class="col-2">
+                <div class="input-group w-100" >
+                    <span class="input-group-text">for</span>
+                    <input type="text" size="6" class="form-control" value="1" id="txtYears">
+                    <span class="input-group-text"> Years  
+                    </span>
+                </div>
+                <div>
+                    <input onchange="GetYears()" type="range" min="1" max="5" value="1" class="form-range w-100" id="rangeYears">
+                </div>
+                <div>
+                    <label class="float-begin">1</label>
+                    <label>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label> 
+                    <label class="float-ends">5</label>
+                    </div>
+                    <br>
+                    
+             </div>
+        
+    
+             <div class="col-3">
+                <div class="input-group w-100" >
+                    <span class="input-group-text">Intrest rate</span>
+                    <input type="text" size="6" class="form-control" value="10" id="txtRate">
+                    <span class="input-group-text">%
+                    </span>
+             </div>
+             <div>
+                 <input onchange="GetRate()" type="range" min="10" max="20" value="10" class="form-range w-100" id="rangeRate"> 
+             </div>
+             <label class="float-begin">10</label>
+             <label>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label> 
+             <label class="float-ends">20</label>
+        </form>
+           </div>
+    
+           <div class="mt-4">
+               <button class="bg-success ms-2" onclick="Calculate()"> Calculate</button>
+                </div>
+           </div>
+          <div class="row mt-5">
+            <div class="col-2"></div>
+            <div id="result" class="col-8"></div>
+            
+          </div>
+       </div>
+    </body>
+</html>
